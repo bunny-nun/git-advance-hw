@@ -10,6 +10,11 @@ class SearchNote(Command):
     __menu = list()
 
     def __init__(self, presenter, view):
+        """
+        Поиск заметок
+        :param presenter: презентер
+        :param view: представление
+        """
         super().__init__(presenter, view)
         super().set_description("Найти заметку")
         self.__menu.append(SearchByID(presenter, view))
@@ -19,6 +24,8 @@ class SearchNote(Command):
         self.__menu.append(SearchByDate(presenter, view))
 
     def execute(self):
+        # выводит меню для выбора метода поиска и запускает соответствующую
+        # команду, обрабатывает ошибки при вводе значения
         print('Выберите действие:')
         self.show()
         choice = int(input())

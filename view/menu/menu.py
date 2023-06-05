@@ -12,6 +12,12 @@ class Menu:
     __menu = list()
 
     def __init__(self, presenter, view):
+        """
+        Главное меню приложения, в качестве атрибутов хранит все отображаемые
+        команды
+        :param presenter: презентер
+        :param view: представление
+        """
         self.__menu.append(AddNote(presenter, view))
         self.__menu.append(DeleteNote(presenter, view))
         self.__menu.append(EditNote(presenter, view))
@@ -22,6 +28,9 @@ class Menu:
         self.__menu.append(HardExit(presenter, view))
 
     def run(self, choice):
+        # запускает метод execute экземпляра класса, соответствующего
+        # выбранной пользователем команды и обрабатывает исключения в случае
+        # некорректного ввода
         try:
             self.__menu[choice - 1].execute()
         except ValueError:
@@ -30,5 +39,7 @@ class Menu:
             print('Некорректное значение, введенное число вне диапазона')
 
     def show(self):
+        # отображает классы, отвечающие за команды, включенные в главное
+        # меню приложения
         for i in range(len(self.__menu)):
             print(f'{i + 1} - {self.__menu[i]}')

@@ -3,6 +3,12 @@ import datetime
 
 class Note:
     def __init__(self, note_id, note_title, note_text):
+        """
+        Класс Note (Заметка)
+        :param note_id: идентификатор
+        :param note_title: заголовок
+        :param note_text: тело заметки
+        """
         self.__note_id = note_id
         self.__note_title = note_title
         self.__note_text = note_text
@@ -16,6 +22,7 @@ class Note:
         return self.__note_title
 
     def set_note_title(self, note_title):
+        # задает заголовок и меняет дату последнего изменения заметки
         self.__note_title = note_title
         self.__change_datetime = datetime.datetime.now()
 
@@ -23,6 +30,7 @@ class Note:
         return self.__note_text
 
     def set_note_text(self, note_text):
+        # задает новый текст и меняет дату последнего изменения заметки
         self.__note_text = note_text
         self.__change_datetime = datetime.datetime.now()
 
@@ -39,6 +47,7 @@ class Note:
         self.__change_datetime = change_datetime
 
     def __str__(self):
+        # строковое отображение заметки
         create_datetime = self.__create_datetime.strftime('%d %B %Y %H:%M')
         change_datetime = self.__change_datetime.strftime('%d %B %Y %H:%M')
         return f'ID: {self.__note_id}\nЗаголовок: {self.__note_title}\n' \

@@ -7,12 +7,20 @@ class EditNote(Command):
     __menu = list()
 
     def __init__(self, presenter, view):
+        """
+        Редактирование заметки
+        :param presenter: презентер
+        :param view: представление
+        """
         super().__init__(presenter, view)
         super().set_description("Редактировать заметку")
         self.__menu.append(EditTitle(presenter, view))
         self.__menu.append(EditText(presenter, view))
 
     def execute(self):
+        # выводит меню для выбора того, что необходимо отредактировать и
+        # запускает соответствующую команду, обрабатывает ошибки при вводе
+        # значения
         print('Что необходимо отредактировать:')
         self.show()
         choice = int(input())

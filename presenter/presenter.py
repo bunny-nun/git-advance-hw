@@ -1,5 +1,11 @@
 class Presenter:
     def __init__(self, view, service):
+        """
+        Класс Presenter используется для взаимодействия между моделью приложения
+        и его представлением
+        :param view: экземпляр представления приложения
+        :param service: экземпляр сервиса модели приложения
+        """
         self.__view = view
         self.__service = service
 

@@ -4,10 +4,19 @@ import datetime
 
 class SearchByDate(Command):
     def __init__(self, presenter, view):
+        """
+        Поиск заметки по диапазону дат
+        :param presenter: презентер
+        :param view: представление
+        """
         super().__init__(presenter, view)
         super().set_description("Найти по дате создания")
 
     def execute(self):
+        # последовательно принимает данные начальной и конечной даты для
+        # формирования диапазона поиска, передает данные презентеру и
+        # принимает список найденных заметок, выводит их на экран,
+        # обрабатывает исключения
         status = False
         while not status:
             try:
