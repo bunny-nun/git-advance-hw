@@ -154,7 +154,7 @@ cython_debug/
 
 # my additions
 
-МАТЕРИАЛЫ
 .idea
 .folder
 notes.json
+README.md
