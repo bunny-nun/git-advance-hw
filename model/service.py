@@ -126,7 +126,7 @@ class Service:
         # дополнительно вычисляет максимальное значение идентификатора и
         # сохраняет его
         try:
-            with open('D:\\УЧЕБА\\NOTES\\notes.json', 'r',
+            with open('notes.json', 'r',
                       encoding='UTF-8') as file:
                 notes = json.load(file)
                 id_list = list()
@@ -159,7 +159,7 @@ class Service:
                                    ).strftime('%Y-%m-%d;%H:%M:%S'),
                                    'change_datetime': note.get_change_datetime(
                                    ).strftime('%Y-%m-%d;%H:%M:%S')})
-        with open('D:\\УЧЕБА\\NOTES\\notes.json', 'w',
+        with open('notes.json', 'w',
                   encoding='UTF-8') as file:
             json.dump(notes, file, ensure_ascii=False, indent=4)
         return False
