@@ -21,4 +21,3 @@ class SearchByID(Command):
             print(note)
         except ValueError:
             print('Некорректное значение, необходимо ввести число')
-

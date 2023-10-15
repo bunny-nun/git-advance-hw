@@ -25,4 +25,4 @@ class EditTitle(Command):
         except ValueError:
             print('Некорректное значение, необходимо ввести число')
         except KeyError:
-            print(f'Заметка с указанным ID не найдена')
+            print('Заметка с указанным ID не найдена')
