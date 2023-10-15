@@ -3,7 +3,7 @@ class Notebook:
         """
         Класс Notebook для хранения заметок
         """
-        self.__notes = dict()
+        self.__notes = {}
 
     def get_notes(self):
         return self.__notes

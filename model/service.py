@@ -1,9 +1,9 @@
 import datetime
 
+import json
 from model.notebook import Notebook
 from model.note import Note
 from model.note_numerator import NoteNumerator
-import json
 
 
 def convert_datetime(datetime_data):
@@ -15,11 +15,11 @@ def convert_datetime(datetime_data):
     """
     datetime_list = datetime_data.split(';')
     date_list = datetime_list[0].split('-')
-    for i in range(len(date_list)):
-        date_list[i] = int(date_list[i])
+    for index in enumerate(date_list):
+        date_list[index] = int(date_list[index])
     time_list = datetime_list[1].split(':')
-    for i in range(len(time_list)):
-        time_list[i] = int(time_list[i])
+    for index in enumerate(time_list):
+        time_list[index] = int(time_list[index])
     date = datetime.datetime(date_list[0], date_list[1], date_list[2],
                              hour=time_list[0], minute=time_list[1],
                              second=time_list[2])
@@ -57,7 +57,7 @@ class Service:
     def search_by_id_pool(self, note_id_start, note_id_end):
         # поиск заметки по диапазону идентификаторов, возвращает список заметок
         notes = self.__notebook.get_notes().values()
-        result_notes = list()
+        result_notes = []
         for note in notes:
             if note.get_note_id() >= note_id_start:
                 if note.get_note_id() <= note_id_end:
@@ -69,7 +69,7 @@ class Service:
         # в качестве подстроки, приводит все значения слов к нижнему регистру,
         # возвращает список заметок, в которых встречаются все искомые слова
         notes = self.__notebook.get_notes().values()
-        result_notes = list()
+        result_notes = []
         for note in notes:
             result = True
             for key_word in key_words:
@@ -84,7 +84,7 @@ class Service:
         # в качестве подстроки, приводит все значения слов к нижнему регистру,
         # возвращает список заметок, в которых встречаются все искомые слова
         notes = self.__notebook.get_notes().values()
-        result_notes = list()
+        result_notes = []
         for note in notes:
             result = True
             for key_word in key_words:
@@ -99,7 +99,7 @@ class Service:
         # возвращает список всех заметок, созданных в пределах
         # данного диапазона
         notes = self.__notebook.get_notes().values()
-        result_notes = list()
+        result_notes = []
         for note in notes:
             if note.get_create_datetime().date() >= start_date:
                 if note.get_create_datetime().date() <= end_date:
@@ -129,7 +129,7 @@ class Service:
             with open('notes.json', 'r',
                       encoding='UTF-8') as file:
                 notes = json.load(file)
-                id_list = list()
+                id_list = []
                 for element in notes['notes']:
                     id_list.append(element['note_id'])
                     note = Note(element['note_id'],
@@ -150,7 +150,7 @@ class Service:
         # сохраняет все заметки, добавленные в данный экземпляр класса
         # в формате json и возвращает значение ложь для реализации метода
         # завершения работы приложения с сохранением
-        notes = {'notes': list()}
+        notes = {'notes': []}
         for note in self.__notebook.get_notes().values():
             notes['notes'].append({'note_id': note.get_note_id(),
                                    'note_title': note.get_note_title(),
